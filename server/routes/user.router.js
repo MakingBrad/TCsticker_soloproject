@@ -10,13 +10,30 @@ const router = express.Router();
 // sends back an object containing that user's information.
 // Otherwise, it sends back an empty object to indicate there
 // is not an active session.
+// router.get('/', (req, res) => {
+//   if (req.isAuthenticated()) {
+//     res.send(req.user);
+//   } else {
+//     res.send({});
+//   }
+// });
+
+//Get request for UserList - Feb9 6pm
 router.get('/', (req, res) => {
-  if (req.isAuthenticated()) {
-    res.send(req.user);
-  } else {
-    res.send({});
-  }
+  console.log ("WTF");
+  // Get all of the users from the database
+  const sqlText = `SELECT * FROM user`;
+  pool.query(sqlText)
+      .then((result) => {
+        console.log(result.rows);
+          res.send(result.rows);
+      })
+      .catch((error) => {
+          console.log(`Error making database query ${sqlText}`, error);
+          res.sendStatus(500);
+      });
 });
+//end of the get for UserList
 
 // Handles the logic for creating a new user. The one extra wrinkle here is
 // that we hash the password before inserting it into the database.
