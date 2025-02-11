@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import useStore from '../../zustand/store';
 import UserList from '../Userlist/UserList';
+// this should be removed later - Brad is testing out some components
+import UpdatesUser from '../UpdatesUser/UpdatesUser';
+// end of testing imports
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -28,7 +31,10 @@ function LoginPage() {
   return (
     <>
       <h2>Login Page</h2>
-      <UserList/>
+      {/* Brad has commented out the userlist component because something is screwey with the DB */}
+      {/* <UserList/> */}
+      <UpdatesUser/>
+      
       <form onSubmit={handleLogIn}>
         <label htmlFor="username">Username:</label>
         <input

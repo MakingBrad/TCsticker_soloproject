@@ -19,7 +19,7 @@ const router = express.Router();
 // });
 
 //Get request for UserList - Feb9 6pm
-router.get('/', (req, res) => {
+router.get('/all', (req, res) => {
   console.log ("WTF");
   // Get all of the users from the database
   const sqlText = `SELECT * FROM user`;
@@ -40,14 +40,15 @@ router.get('/', (req, res) => {
 router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const hashedPassword = encryptLib.encryptPassword(req.body.password);
-
+// Because Brads DB has two additional fields, he needs to add firstname and lastname to this DB post
+//this is done 3 lines down and 7 lines down from this row in the code
   const sqlText = `
     INSERT INTO "user"
-      ("username", "password")
+      ("firstname", "lastname","username", "password")
       VALUES
-      ($1, $2);
+      ($1, $2, $3, $4);
   `;
-  const sqlValues = [username, hashedPassword];
+  const sqlValues = [firstname, lastname, username, hashedPassword];
 
   pool.query(sqlText, sqlValues)
     .then(() => {

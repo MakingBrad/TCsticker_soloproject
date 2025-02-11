@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-//import './StudentList.css';
+//Do I need to import the store, or a slice or something?
+import useStore from '../../zustand/store';
 
 //this component is meant to take in the userList from the server, and make the
 //table that shows the first and last name of the user
@@ -21,7 +22,7 @@ function UserList() {
     const getUserList = () => {
         axios({
             method: 'GET',
-            url: '/api/user'
+            url: '/api/user/all'
         }).then((response) => {
             setUserList(response.data);
         }).catch((err)=>{
