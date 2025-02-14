@@ -22,7 +22,7 @@ const router = express.Router();
 router.get('/all', (req, res) => {
   console.log ("WTF");
   // Get all of the users from the database
-  const sqlText = `SELECT * FROM user`;
+  const sqlText = `SELECT * FROM "user"`;
   pool.query(sqlText)
       .then((result) => {
         console.log(result.rows);
@@ -38,17 +38,23 @@ router.get('/all', (req, res) => {
 // Handles the logic for creating a new user. The one extra wrinkle here is
 // that we hash the password before inserting it into the database.
 router.post('/register', (req, res, next) => {
+  console.log("dude!");
+  const firstname =req.body.firstname;
+  const lastname = req.body.lastname;
   const username = req.body.username;
   const hashedPassword = encryptLib.encryptPassword(req.body.password);
+
+  console.log(firstname,lastname,username,hashedPassword);
+
 // Because Brads DB has two additional fields, he needs to add firstname and lastname to this DB post
 //this is done 3 lines down and 7 lines down from this row in the code
   const sqlText = `
     INSERT INTO "user"
-      ("firstname", "lastname","username", "password")
+      ("first_name", "last_name","username", "password","user_is_admin")
       VALUES
-      ($1, $2, $3, $4);
+      ($1, $2, $3, $4, $5);
   `;
-  const sqlValues = [firstname, lastname, username, hashedPassword];
+  const sqlValues = [firstname, lastname, username, hashedPassword, 'FALSE'];
 
   pool.query(sqlText, sqlValues)
     .then(() => {

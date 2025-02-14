@@ -9,7 +9,7 @@ import useStore from '../../zustand/store';
 function UserList() {
     let [userList, setUserList] = useState([]);
 
-    // On Load, fetch student data from the server
+    // On Load, fetch user data from the server
     //useEffect below is only necessary after I implement a button
 
     useEffect(() => {

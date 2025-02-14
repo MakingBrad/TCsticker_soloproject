@@ -23,7 +23,12 @@ function App() {
   return (
     <>
       <header>
+      
         <h1>Prime Solo Project</h1>
+        <h5>Product Group1</h5>
+        <h5>Product Group2</h5>
+        <h5>Product Group3</h5>
+
         <Nav />
       </header>
       <main>

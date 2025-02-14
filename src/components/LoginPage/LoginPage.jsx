@@ -3,6 +3,8 @@ import useStore from '../../zustand/store';
 import UserList from '../Userlist/UserList';
 // this should be removed later - Brad is testing out some components
 import UpdatesUser from '../UpdatesUser/UpdatesUser';
+import DesignsList from '../DesignsList/DesignsList';
+
 // end of testing imports
 
 function LoginPage() {
@@ -32,9 +34,10 @@ function LoginPage() {
     <>
       <h2>Login Page</h2>
       {/* Brad has commented out the userlist component because something is screwey with the DB */}
-      {/* <UserList/> */}
+      <UserList/>
+      <DesignsList/>
       <UpdatesUser/>
-      
+
       <form onSubmit={handleLogIn}>
         <label htmlFor="username">Username:</label>
         <input

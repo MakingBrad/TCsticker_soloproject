@@ -24,6 +24,9 @@ function RegisterPage() {
     event.preventDefault();
 
     register({
+      // brad thinks that he needs the first name and last name here
+      firstname: firstname,
+      lastname: lastname,
       username: username,
       password: password,
     })

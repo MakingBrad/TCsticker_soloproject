@@ -13,6 +13,8 @@ const passport = require('./strategies/user.strategy');
 
 // Require router files:
 const userRouter = require('./routes/user.router');
+//**I think this is the proper way to write the location for the designs router
+const designsRouter = require('./routes/designs.router');
 
 // Apply middleware:
 app.use(express.json());
@@ -24,7 +26,8 @@ app.use(passport.session());
 
 // Apply router files:
 app.use('/api/user', userRouter);
-
+//**I think this is the proper way to write the route for the design router
+app.use('/api/designs', designsRouter);
 // Start the server:
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);

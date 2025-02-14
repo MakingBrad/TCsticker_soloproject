@@ -29,6 +29,16 @@ function Nav() {
           </>
         )
       }
+      {/* 
+      Brad wants to write the following code:
+            if (user.user_is_admin==TRUE) {
+        <Navlink to"/CreateUser">Create User</NavLink>
+        <Navlink to"/anotherRoute">Another Route</NavLink>
+      } else {
+        null
+      } 
+     */}
+     
       {/* Show these links regardless of auth status: */}
         <li>
           <NavLink to="/about">About</NavLink>
